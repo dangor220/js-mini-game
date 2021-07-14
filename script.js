@@ -10,18 +10,18 @@ var $stopGame = document.querySelector('#stop-game')
 var score = 0
 var color = ['red', 'blue', 'pink', 'yellow', 'green', 'orange']
 var isGameStarted = false
+var clickStop = false
 
 $start.addEventListener('click', startGame)
 $game.addEventListener('click', handleBoxClick)
 $gameTime.addEventListener('input', setGameTime)
-$stopGame.addEventListener('click', stopGameClick)
+$stopGame.addEventListener('click', clickStopGame)
 
 
 
 function startGame() {
     score = 0
     setGameTime()
-    $stopGame.classList.remove('hide')
     $gameTime.setAttribute('disabled', true)
     $timeHeader.classList.remove('hide')
     $resultHeader.classList.add('hide')
@@ -32,7 +32,7 @@ function startGame() {
     var interval = setInterval(function() {
         var time = +$time.textContent
 
-        if (time <= 0) {
+        if (time <= 0 || clickStop) {
             clearInterval(interval)
             endGame()
         } else {
@@ -42,9 +42,8 @@ function startGame() {
 
     renderBox()
 }
-
-function stopGameClick () {
-    endGame()
+function clickStopGame () {
+    clickStop = true
 }
 
 function renderBox() {
@@ -83,6 +82,7 @@ function getRandom (min, max) {
 
 function endGame () {
     isGameStarted = false
+    clickStop = false
     $timeHeader.classList.add('hide')
     $resultHeader.classList.remove('hide')
     $result.textContent = score
@@ -90,7 +90,7 @@ function endGame () {
     $game.style.backgroundColor = '#ccc'
     $game.innerHTML = ''
     $gameTime.removeAttribute('disabled')
-    $stopGame.classList.add('hide')
+    
 }
 function setGameTime() {
     var time = +$gameTime.value
