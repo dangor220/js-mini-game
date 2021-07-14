@@ -22,6 +22,7 @@ $stopGame.addEventListener('click', clickStopGame)
 function startGame() {
     score = 0
     setGameTime()
+    $stopGame.classList.remove('hide')
     $gameTime.setAttribute('disabled', true)
     $timeHeader.classList.remove('hide')
     $resultHeader.classList.add('hide')
@@ -83,6 +84,7 @@ function getRandom (min, max) {
 function endGame () {
     isGameStarted = false
     clickStop = false
+    $stopGame.classList.add('hide')
     $timeHeader.classList.add('hide')
     $resultHeader.classList.remove('hide')
     $result.textContent = score
