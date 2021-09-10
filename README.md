@@ -1,4 +1,4 @@
-# js_game
+# Cube_game
 
 Технологии
 * JS
