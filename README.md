@@ -1,6 +1,6 @@
 # Cube_game
 
-Технологии
+Technologies:
 * JS
 * HTML
 * CSS
