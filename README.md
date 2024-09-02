@@ -1,4 +1,4 @@
-# Cube
+# Quick Click
 
 Technologies:
 * JS
