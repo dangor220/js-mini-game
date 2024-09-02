@@ -1,4 +1,4 @@
-# Cube_game
+# Cube
 
 Technologies:
 * JS
